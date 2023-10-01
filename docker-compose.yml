@@ -4,7 +4,7 @@ version: "3.3"
 
 services:
   nginx:
-    image: elestio4test/bigcapital-nginx:latest
+    image: elestio/bigcapital-nginx:latest
     restart: always
     volumes:
       - ./storage/data/logs/nginx/:/var/log/nginx
@@ -18,11 +18,11 @@ services:
       - webapp
 
   webapp:
-    image: elestio4test/bigcapital-webapp:latest
+    image: elestio/bigcapital-webapp:latest
     restart: always
 
   server:
-    image: elestio4test/bigcapital-server:latest
+    image: elestio/bigcapital-server:latest
     restart: always
     links:
       - mariadb
@@ -73,7 +73,7 @@ services:
       - SIGNUP_ALLOWED_EMAILS=${SIGNUP_ALLOWED_EMAILS}
 
   database_migration:
-    image: elestio4test/bigcapital-migration:latest
+    image: elestio/bigcapital-migration:latest
     restart: always
     environment:
       # Database
@@ -88,7 +88,7 @@ services:
       - mariadb
 
   mariadb:
-    image: elestio4test/bigcapital-mariadb:latest
+    image: elestio/bigcapital-mariadb:latest
     restart: always
     environment:
       - MARIADB_DATABASE=${SYSTEM_DB_NAME}
@@ -101,7 +101,7 @@ services:
       - "3306"
 
   mongo:
-    image: elestio4test/bigcapital-mongo:latest
+    image: elestio/bigcapital-mongo:latest
     restart: always
     expose:
       - "27017"
@@ -109,7 +109,7 @@ services:
       - ./storage/mongo:/var/lib/mongodb
 
   redis:
-    image: elestio4test/bigcapital-redis:latest
+    image: elestio/bigcapital-redis:latest
     restart: always
     expose:
       - "6379"

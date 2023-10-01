@@ -39,6 +39,8 @@ environments:
     value: "root"
   - key: "DB_PASSWORD"
     value: "random_password"
+  - key: "DB_ROOT_PASSWORD"
+    value: "random_password"
   - key: "DB_CHARSET"
     value: "utf8"
   - key: "SYSTEM_DB_NAME"

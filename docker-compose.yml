@@ -18,11 +18,11 @@ services:
       - webapp
 
   webapp:
-    image: elestio/bigcapital-webapp:latest
+    image: elestio/bigcapital-webapp:${SOFTWARE_VERSION_TAG}
     restart: always
 
   server:
-    image: elestio/bigcapital-server:latest
+    image: elestio/bigcapital-server:${SOFTWARE_VERSION_TAG}
     restart: always
     links:
       - mariadb
@@ -73,7 +73,7 @@ services:
       - SIGNUP_ALLOWED_EMAILS=${SIGNUP_ALLOWED_EMAILS}
 
   database_migration:
-    image: elestio/bigcapital-migration:latest
+    image: elestio/bigcapital-migration:${SOFTWARE_VERSION_TAG}
     restart: always
     environment:
       # Database

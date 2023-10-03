@@ -98,6 +98,8 @@ services:
     volumes:
       - ./storage/mariadb:/var/lib/mariadb
     expose:
+      - "3306"
+    ports:
       - "172.17.0.1:17956:3306"
 
   mongo:

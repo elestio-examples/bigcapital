@@ -98,7 +98,7 @@ services:
     volumes:
       - ./storage/mariadb:/var/lib/mariadb
     expose:
-      - "3306"
+      - "172.17.0.1:17956:3306"
 
   mongo:
     image: elestio/bigcapital-mongo:latest
@@ -115,3 +115,21 @@ services:
       - "6379"
     volumes:
       - ./storage/redis:/data
+
+  pma:
+    image: phpmyadmin
+    restart: always
+    links:
+      - mariadb:mariadb
+    ports:
+      - "172.17.0.1:8502:80"
+    environment:
+      PMA_HOST: mariadb
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: ${ADMIN_PASSWORD}
+      UPLOAD_LIMIT: 500M
+      MYSQL_USERNAME: root
+      MYSQL_ROOT_PASSWORD: ${ADMIN_PASSWORD}
+    depends_on:
+      - mariadb

@@ -15,3 +15,9 @@ You can open Bigcapital UI here:
     URL: https://[CI_CD_DOMAIN]
     email: [ADMIN_EMAIL]
     password: [ADMIN_PASSWORD]
+
+You can open PHPMyAdmin here:
+
+    URL: https://[CI_CD_DOMAIN]:22632
+    login: root
+    password: [ADMIN_PASSWORD]

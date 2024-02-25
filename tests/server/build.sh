@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 mv ./packages/server/Dockerfile ./
-docker buildx build . --output type=docker,name=elestio4test/bigcapital-server:latest | docker load
+sed -i "s~return this.salesTaxLiabiltiyPdf.pdf(tenantId, query):~return this.salesTaxLiabiltiyPdf.pdf(tenantId, query);~g" ./packages/server/src/services/FinancialStatements/SalesTaxLiabilitySummary/SalesTaxLiabilitySummaryApplication.ts
+docker buildx build . --no-cache --output type=docker,name=elestio4test/bigcapital-server:latest | docker load

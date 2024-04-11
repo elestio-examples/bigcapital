@@ -122,7 +122,7 @@ services:
       - ./storage/redis:/data
 
   gotenberg:
-    image: gotenberg/gotenberg:7
+    image: elestio/gotenberg:v7.10.1
     expose:
       - "9000"
 

@@ -72,9 +72,11 @@ services:
       - SIGNUP_ALLOWED_DOMAINS=${SIGNUP_ALLOWED_DOMAINS}
       - SIGNUP_ALLOWED_EMAILS=${SIGNUP_ALLOWED_EMAILS}
 
+      - GOTENBERG_URL=${GOTENBERG_URL}
+      - GOTENBERG_DOCS_URL=${GOTENBERG_DOCS_URL}
+
   database_migration:
     image: elestio/bigcapital-migration:${SOFTWARE_VERSION_TAG}
-    restart: always
     environment:
       # Database
       - DB_HOST=mysql
@@ -118,6 +120,11 @@ services:
       - "6379"
     volumes:
       - ./storage/redis:/data
+
+  gotenberg:
+    image: gotenberg/gotenberg:7
+    expose:
+      - "9000"
 
   pma:
     image: elestio/phpmyadmin:latest

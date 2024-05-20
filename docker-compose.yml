@@ -77,6 +77,8 @@ services:
 
   database_migration:
     image: elestio/bigcapital-migration:${SOFTWARE_VERSION_TAG}
+    extra_hosts:
+    - "mariadb:172.17.0.1"
     environment:
       # Database
       - DB_HOST=mysql
@@ -104,6 +106,7 @@ services:
       - "3306"
     ports:
       - "172.17.0.1:17956:3306"
+      - "172.17.0.1:3306:3306"
 
   mongo:
     image: elestio/bigcapital-mongo:latest

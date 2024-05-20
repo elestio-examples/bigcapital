@@ -18,3 +18,7 @@ curl http://${target}/api/auth/register \
   -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36' \
   --data-raw '{"first_name":"admin","last_name":"admin","email":"'${ADMIN_EMAIL}'","password":"'${ADMIN_PASSWORD}'"}' \
   --compressed
+
+  sleep 30s;
+
+  docker-compose exec -T mysql bash -c "mysql -u root -p'${DB_ROOT_PASSWORD}' -e \"USE bigcapital_system; ALTER TABLE USERS MODIFY verified tinyint(1) DEFAULT true;\""

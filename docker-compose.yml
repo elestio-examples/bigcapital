@@ -4,7 +4,7 @@ version: "3.3"
 
 services:
   nginx:
-    image: elestio/bigcapital-nginx:latest
+    image: elestio/bigcapital-nginx:${SOFTWARE_VERSION_TAG}
     restart: always
     volumes:
       - ./storage/data/logs/nginx/:/var/log/nginx
@@ -78,7 +78,7 @@ services:
   database_migration:
     image: elestio/bigcapital-migration:${SOFTWARE_VERSION_TAG}
     extra_hosts:
-    - "mariadb:172.17.0.1"
+      - "mariadb:172.17.0.1"
     environment:
       # Database
       - DB_HOST=mysql

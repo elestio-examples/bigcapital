@@ -62,7 +62,8 @@ environments:
     value: "123123"
   - key: "SIGNUP_DISABLED"
     value: "false"
-
+  - key: "NEW_RELIC_APP_NAME"
+    value: "BigCapital"
 config:
   runTime: "dockerCompose"
   version: ""

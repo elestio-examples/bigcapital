@@ -75,6 +75,7 @@ services:
       - GOTENBERG_URL=${GOTENBERG_URL}
       - GOTENBERG_DOCS_URL=${GOTENBERG_DOCS_URL}
 
+      - NEW_RELIC_APP_NAME=${NEW_RELIC_APP_NAME}
   database_migration:
     image: elestio/bigcapital-migration:${SOFTWARE_VERSION_TAG}
     extra_hosts:
